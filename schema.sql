@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS posts;
-CREAT TABLE posts (
+CREATE TABLE posts (
   id INTEGER PRIMARY KEY, 
-  title TEXT, body TEXT, image , 
+  title TEXT, body TEXT, image TEXT, 
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

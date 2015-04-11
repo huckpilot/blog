@@ -1,5 +1,5 @@
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('blog.db');
+var db = new sqlite3.Database('posts.db');
 db.run("INSERT INTO blog (title, body, image) VALUES (?, ?, ?), (?, ?, ?), (?, ?, ?), (?, ?, ?)",
   'Title1', 'body1','url1',
   'Title2', 'body2','url2',

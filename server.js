@@ -16,7 +16,7 @@ var express = require("express");
 var app = express();
 
 // Var ejs sets the templating engine
-var ejs = requre("ejs");
+var ejs = require("ejs");
 app.set("view_engine", "ejs");
 
 // Use body parser to parse the body
@@ -25,9 +25,9 @@ var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: false}))
 
 // Allow for method override
-var methodOverride = reqiure("method-override");
+var methodOverride = require("method-override");
 // tell app which override method to use
-app.use(methodoverride("_method"))
+app.use(methodOverride("_method"))
 
 // Used to give the blog posts unique id's. I don't think I will need this but I am unsure so I am keeping it for now
 // var counter = 1
@@ -37,7 +37,7 @@ app.use(methodoverride("_method"))
 //Fun stuff 
 ////////////////////////
 
-// This will redirec to my blog if someone does not specify a route.
+// This will redirect to my blog if someone does not specify a route.
 app.get("/", function(req, res){
   res.redirect("/posts")
 });
@@ -52,7 +52,8 @@ app.get("/posts", function(req, res){
 
 
 
-
+app.listen(3000);
+console.log("Listening on port 3000");
 
 
 
