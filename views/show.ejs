@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<body>
+  <h1>Blog Entry</h1>
+  <!-- Display the contents of this post -->
+  <h3><%= thisPost.title %> </h3>
+  <p><%= thisPost.paragraph %></p>
+  </br>
+  <a href="/post/<%= thisPost.id %>/edit">Update this post</a>
+  </br>
+  <a href="/posts">Go back to blog</a>
+  </br>
+  <form method="POST" action="/post/<%= thisPost.id %>?_method=DELETE">
+    <button>Delete this post</button>
+  </form>
+</body>
+</html>

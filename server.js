@@ -49,7 +49,51 @@ app.get("/posts", function(req, res){
   });
 });
 
+// Show individual post
+app.get("/post/:id", function(req, res){
+  // Get blog id from url,  set thisPost to appropriate post
+  db.get("SELECT * FROM posts WHERE id = ?", req.params.id, function(err, data){
+    //console.log(data)
+    res.render("show.ejs", {thisPost: data})
+  });
+});
 
+// Serve up a new page for a create post form
+app.get("/posts/new", function(req, res){
+  res.render("new.ejs")
+});
+
+
+// Create the post and post it to your posts page
+app.post("/posts", function(req, res){
+  // Get info from req.body to make the new post
+  db.run("INSERT INTO posts (title, paragraph, image) VALUES(?, ?, ?)", req.body.title, req.body.paragraph, req.body.image, function(err){
+    res.redirect("/posts");
+  });
+});
+
+// Send user to edit post form
+app.get("/post/:id/edit", function(req, res){
+  db.get("SELECT * FROM posts WHERE id = ?", req.params.id, function(err, data){
+    res.render("edit.ejs", {thisPost: data})
+  });
+})
+
+// Update a post
+app.put("/post/:id", function(req, res){
+  db.run("UPDATE posts SET title = ?, paragraph = ?, image = ? WHERE id = ?", req.body.title, req.body.paragraph, req.body.image, req.params.id, function(err){
+    //console.log(req.body.title);
+    res.redirect("/post/" + parseInt(req.params.id));
+  });
+});
+
+// Delete a post
+app.delete("/post/:id", function(req, res){
+  db.run("DELETE FROM posts WHERE id = ?", req.params.id,
+    function(err){
+      res.redirect("/posts");
+    });
+});
 
 
 app.listen(3000);
