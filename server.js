@@ -45,7 +45,8 @@ app.get("/", function(req, res){
 // This is going to show all blog posts
 app.get("/posts", function(req, res){
   db.all("SELECT * FROM posts", function(err, data){
-    res.render("index.ejs", {blog: data})
+    console.log(data);
+    res.render("index.ejs", {posts: data})
   });
 });
 

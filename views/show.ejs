@@ -5,6 +5,10 @@
   <h3><%= thisPost.title %> </h3>
   <p><%= thisPost.paragraph %></p>
   </br>
+    <div>
+  <img src="<%= thisPost.image %>">
+  </div>
+  </br>
   <a href="/post/<%= thisPost.id %>/edit">Update this post</a>
   </br>
   <a href="/posts">Go back to blog</a>
