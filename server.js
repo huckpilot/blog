@@ -29,9 +29,10 @@ var methodOverride = require("method-override");
 // tell app which override method to use
 app.use(methodOverride("_method"))
 
-// Used to give the blog posts unique id's. I don't think I will need this but I am unsure so I am keeping it for now
-// var counter = 1
-
+// giphy api section
+//first part of the api search before the search term
+var apiStart = "//api.giphy.com/v1/gifs/search?q=";
+var apiEnd = "&api_key=dc6zaTOxFJmzC";
 
 ////////////////////////
 //Fun stuff 
